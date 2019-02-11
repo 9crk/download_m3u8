@@ -27,4 +27,5 @@ do
 done
 
 
-ffmpeg -i playlist.m3u8 -c copy media.ts
+ffmpeg -i playlist.m3u8 -c copy media.flv
+rm *.ts
