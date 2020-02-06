@@ -9,6 +9,13 @@ url_f=${playlist%/*}
 
 wget $playlist -O playlist.m3u8
 
+lines=`cat playlist.m3u8 |wc -l`
+if [[ lines -lt 20 ]] 
+then
+    newlist=`echo $playlist|sed 's/index.m3u8/1000k\/hls\/index.m3u8/g'`	
+    wget $newlist -O playlist.m3u8
+fi 
+
 cat playlist.m3u8|while read line
 do
 	if [[ $line =~ ".ts" ]]
