@@ -34,5 +34,5 @@ do
         fi
 done
 
-ffmpeg -i playlist.m3u8 -c copy media.flv
-rm *.ts
+ffmpeg -i playlist.m3u8 -c copy -bsf:a aac_adtstoasc media.flv
+#rm *.ts
