@@ -9,10 +9,11 @@ url_f=${playlist%/*}
 
 wget $playlist -O playlist.m3u8
 
-lines=`cat playlist.m3u8 |wc -l`
-if [[ lines -lt 20 ]] 
+cnt=`cat playlist.m3u8 |wc -l`
+if [[ cnt -lt 20 ]] 
 then
     newlist=`echo $playlist|sed 's/index.m3u8/1000k\/hls\/index.m3u8/g'`	
+    url_f=${newlist%/*}
     wget $newlist -O playlist.m3u8
 fi 
 
